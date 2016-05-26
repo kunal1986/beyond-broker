@@ -1,0 +1,413 @@
+
+    <nav class="navbar navbar-default navbar-static-top">
+      
+      <div class="container">
+      	<%= link_to image_tag("Dark Logo - 305x67.png", border: 0), {action: 'home',controller: 'beyondbroker'},{id: 'logo'} %>
+
+        <div class="navMenu">
+		      <div class="userMenu">
+		      	<%= link_to "Sign-Up", "#" %>
+		      	<%= link_to "Login", "#" %>
+		      </div>
+
+		      <div class="infoMenu">
+		      	<%= link_to "How It Works", "#" %>
+		      	<%= link_to "Tools", "#" %>
+		      	<%= link_to "Buyers", "#" %>
+		      	<%= link_to "Sellers", "#" %>
+		      </div>
+		     </div>     
+
+      </div>
+    </nav>
+
+   
+
+   <!-- Top section with search section -->
+    <div class="backgroundPhoto">
+    
+	    <!-- top of page container -->
+	    <div class="container">
+
+	      <!-- Main component for primary call to action -->
+	      <div class="jumbotron">
+	        <h1>Real estate, the way it should be</h1>
+	        <p class="description">Whether you're buying or selling, we simplify your journey and save you time.</p>
+	        <!-- Sellers and Buyers search area -->
+	        <div id="search">
+		        
+						  <!-- Selection tabs -->
+						  <ul class="nav nav-tabs sTabs" role="tablist">
+						    <!-- Sellers tab -->
+						    <li role="presentation" class="active">
+						    	<a href="#sellers" aria-controls="sellers" role="tab" data-toggle="tab">Sellers
+						    		<span id="sSelected" class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+						    	</a>
+						    </li>
+						    <!-- Buyers tab -->
+						    <li role="presentation">
+						    	<a href="#buyers" aria-controls="buyers" role="tab" data-toggle="tab">Buyers
+										<span id="sSelected" class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+						    	</a>
+						    </li>
+						  </ul>
+
+						  <!-- Tab panes -->
+						  <div class="tab-content">
+						  	<!-- sellers pane -->
+						    <div role="tabpanel" class="tab-pane active" id="sellers">
+							    <p>
+							   <%= form_tag({:action => "results"}, :method => "post") do %>
+							   <div id="locationField">
+							   	<%= text_field_tag(:address_text,"", :class => "sInput",:id => "autocomplete",:placeholder => "Enter your home address", :onFocus => "geolocate()")  %>
+									
+								</div>
+								</p>
+								<%= submit_tag("Get started", :class =>"btn btn-lg btn-primary brokerButton") %>
+		        			  <% end %>
+		        			</p>
+		        		</div>
+						    <!-- buyers pane -->
+						    <div role="tabpanel" class="tab-pane" id="buyers">
+						    	<p>
+
+			        			<%= form_tag({:action => "results"}, :method => "most") do %>
+							   	<%= text_field_tag(:address_text,"", :class => "sInput",:id => "autocomplete",:placeholder => "Enter your home address", :onFocus => "geolocate()")  %>
+									</p>
+								<%= submit_tag("Search for Homes", :class =>"btn btn-lg btn-primary brokerButton") %>
+		        			  <% end %>
+		        				
+		        			</p>
+		        		</div>
+		        	</div>
+
+		        </div> <!-- end of search -->
+	        
+		        <div><%= image_tag("videoPlayer.png") %></div>
+
+		       </div> <!-- end of jumbotron -->
+		        		
+	  	</div> <!-- /container -->
+
+   	</div> <!-- end of photo -->
+
+
+
+
+
+	  <div class="container">
+	  	<div class="jumbotron moreInfo">
+	  		<h1>The smarter way to do real estate</h1>
+	  		<ul class="table">
+	  			<li>
+		  			<ul class="moreInfoDetails firstLine">
+		  				<li><%= image_tag("icons/contracts.png") %>
+		  					<div>
+		  						Simple Contracts
+		  						<p>Contracts explained so a 10-year old can understand</p>
+		  					</div>
+		  					
+		  				</li>
+		  				<li><%= image_tag("icons/agents.png") %>
+		  					<div>
+		  						Helpful Agents
+		  						<p>Your personal real estate guardian angel looking out for your best interest</p>
+		  					</div>
+		  				</li>
+		  				<li><%= image_tag("icons/guarantee.png") %>
+								<div>
+		  						100% Guarantee
+		  						<p>If you don't close, we don't charge</p>
+		  					</div>
+		  				</li>
+		  			</ul>
+	  			</li>
+	  			<li>
+		  			<ul class="moreInfoDetails firstLine">
+		  				<li><%= image_tag("icons/transparency.png") %>
+		  					<div>
+			  					Full Transparency
+			  					<p>Stay informed so you can make the best decisions possible</p>
+			  				</div>
+		  				</li>
+		  				<li> <%= image_tag("icons/clock.png") %>
+		  					<div>
+			  					Save Time
+			  					<p>Get your home on the market within 48 hours and start receiving offers within a week</p>
+			  				</div>
+			  			<li><%= image_tag("icons/money.png",id:"money") %>
+		  					<div id="moneyAlign">
+			  					Save Money
+			  					<p>Pay 1% commission to sell your home with us; receive 50% of the commission for closing costs when you buy with us</p>
+			  				</div>
+		  				</li>
+		  				</li>
+		  			</ul>
+	  			</li>
+	  		</ul>
+
+	  		<%= image_tag("iPad.png") %>
+	  		<%= link_to "Talk to an agent", "../../components/#navbar", {class: 'btn btn-lg btn-primary brokerButton'} %>
+	  	</div>	
+	  </div>
+
+
+<div class="path">
+		  <div class="container ">
+		  	<div class="jumbotron">
+		  		<h1>Easy as riding a bike...with training wheels</h1>
+		  		<p class="description">With Beyond Broker, you always know where you are on the journey.</p>
+
+		  		<!-- Buyers/Sellers Path Tabs -->
+						<div id="path">
+						  <ul class="nav nav-tabs sTabs pathTabs" role="tablist">
+						    <!-- Sellers tab -->
+						    <li role="presentation" class="active">
+						    	<a href="#seller" aria-controls="seller" role="tab" data-toggle="tab">Sellers
+						    	</a>
+						    </li>
+						    <!-- Buyers tab -->
+						    <li role="presentation">
+						    	<a href="#buyer" aria-controls="buyer" role="tab" data-toggle="tab">Buyers
+						    	</a>
+						    </li>
+						  </ul>
+
+						  <!-- Tab panes -->
+						  <div class="tab-content">
+						  	
+						  	<!-- sellers pane -->
+						    <div role="tabpanel" class="tab-pane active" id="seller">
+							    
+						    <!-- Path after selecting Seller -->
+							    <ul class="nav nav-tabs detailTabs" role="tablist">
+								    <!-- Sellers tab -->
+								    <li role="presentation" class="active">
+								    	
+
+									  			<ul class="pathDetails">
+									  				<li>
+									  					<h3>1. List</h3>
+									  					<p>We make sure your home is listed correctly and ready to sell.</p>
+
+									  					How we help:
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Pricing<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Staging<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Photography<span>
+									  					</div>
+									  					
+									  				</li>
+									  				<li>
+									  					<h3>2. Market</h3>
+									  					<p>Thousands of potential buyers will see your home online and in-person. </p>
+
+									  					How we help:
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Marketing plan<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Showings<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Listing sites and more<span>
+									  					</div>
+									  				
+									  				</li>
+									  				<li>
+															<h3>3. Get offers</h3>
+									  					<p>You see offers as they come in and we help decipher the good from the bad.</p>
+
+									  					How we help:
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Advice<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Real-time updates<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Easy-to-read format<span>
+									  					</div>
+									  				</li>
+									  				<li>
+															<h3>4. Close</h3>
+									  					<p>Once you pick the offer, we make sure the right people are involved to close.</p>
+
+									  					How we help:
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Initiate escrow<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Hire title company<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Contract review<span>
+									  					</div>
+									  				</li>
+									  			</ul>
+
+		        		</div>
+						    
+						    <!-- buyers pane -->
+						    <div role="tabpanel" class="tab-pane" id="buyer">
+						    	<!-- Path after selecting Buyer -->
+							    <ul class="nav nav-tabs detailTabs" role="tablist">
+								    <!-- Buyers tab -->
+								    <li role="presentation" class="active">
+								    	
+
+									  			<ul class="pathDetails">
+									  				<li>
+									  					<h3>1. Research</h3>
+									  					<p>We help you figure out what you really want and need.</p>
+
+									  					How we help:
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Area advice<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Affordability<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Ownership info<span>
+									  					</div>
+									  					
+									  				</li>
+									  				<li>
+									  					<h3>2. View houses</h3>
+									  					<p>We make it easy to see homes when you want to. </p>
+
+									  					How we help:
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Online scheduling<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Walkthroughs<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Home input<span>
+									  					</div>
+									  				</li>
+									  				<li>
+															<h3>3. Place offer</h3>
+									  					<p>Place offers through your agent or through our online tool.</p>
+
+									  					How we help:
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Advice on offer<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Tracking of offer<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Quick feedback<span>
+									  					</div>
+									  				</li>
+									  				<li>
+															<h3>4. Close</h3>
+									  					<p>Once your offer is accepted, we get the right people involved to close.</p>
+
+									  					How we help:
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Inspection<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Hire title company<span>
+									  					</div>
+									  					<div>
+									  					<span id=pathIcons class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									  					
+									  					<span>Contract review<span>
+									  					</div>
+									  				</li>
+									  			</ul>
+
+		        		</div>
+		        	</div>
+		        </div>
+		  	</div>
+		  </div>
+	  </div>
+
+	
+
+	<div class="container">
+	  	<div class="jumbotron footer">
+	  		
+	  		<div class="col-lg-3 col-md-3 col-sm-3 left">
+	  			<%= link_to image_tag("Dark Logo - 305x67.png"), {action: 'home',controller:'beyondbroker'},{id: 'logo'} %>
+	  		</div>
+
+	  		<div class="col-lg-6 col-md-6 col-sm-6 center">
+	  			<%= link_to "About Us", "home" %>
+	  			<%= link_to "Investors", "home"%>
+	  			<%= link_to "Careers", "home" %>
+	  			<%= link_to "Help", "home" %>
+	  			<%= link_to "Advice", "home" %>
+	  		</div>
+
+	  		<div class="col-lg-3 col-md-3 col-sm-3 right">
+	  			<i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
+	  			<i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+	  			<i class="fa fa-pinterest fa-2x" aria-hidden="true"></i>
+	  			<i class="fa fa-snapchat fa-2x" aria-hidden="true"></i>
+	  		</div>
+	  		
+	  		
+	  	</div>	
+	  </div>
+
+	    
+         <%= javascript_include_tag "autocomplete" %>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7b335gEGfKPmz-rA4qmykVU-k1y0t1uk&libraries=places&callback=initAutocomplete"
+        async defer></script>
